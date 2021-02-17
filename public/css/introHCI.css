@@ -1,0 +1,46 @@
+#bottom-bar
+{ 
+	padding: 20px;
+}
+
+#top-bar
+{ 
+	padding: 20px;
+}
+
+#back-button
+{ 
+	border-radius: 50%;
+}
+
+#main-content
+{
+	padding: 75px
+}
+
+h1
+{
+	font-family: 'AR Berkley';
+	text-align: center;
+}
+
+#main-content
+{
+	width: 50%;
+}
+
+#main-content .container
+{
+	height:50%;
+}
+
+#landing-buttons
+{
+	width: 100%;
+}
+
+#landing-buttons button
+{
+	margin-top:35px;
+	margin-bottom:35px;
+}

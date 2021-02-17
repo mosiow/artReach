@@ -1,8 +1,37 @@
 <html>
 <head>
-	<title>Test Page</title>
+	<title>ArtReach</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link href="css/introHCI.css" rel="stylesheet">
+
+	<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
-Begin here (or replace this with any static code already written).
+	<div class="container-fluid fixed-top" id="top-bar">
+		<div class="btn-group-lg">
+			<button id="back-button" type="button" class="btn btn-outline-dark float-left"><</button>
+			<button id="notif-button" type="button" class="btn btn-outline-dark float-right">Notifs</button>
+		</div>
+	</div>
+
+	<div class="container" id="main-content">
+		<h1>ArtReach</h1>
+		<div class="container d-flex align-content-center flex-wrap">
+			<div class="btn-group-lg" id="landing-buttons">
+				<button id="project-list" type="button" class="btn btn-outline-dark btn-block">Project List</button>
+				<button id="archive-list" type="button" class="btn btn-outline-dark btn-block">Archived Projects</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="jumbotron fixed-bottom" id="bottom-bar">
+		<div class="btn-group-lg d-flex justify-content-around">
+			<button id="project-button" type="button" class="btn btn-outline-dark">Projects</button>
+			<button id="new-button" type="button" class="btn btn-outline-dark">New Project</button>
+			<button id="friend-button" type="button" class="btn btn-outline-dark">Friends</button>
+		</div>
+	</div>
 </body>
 </html>
