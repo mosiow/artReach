@@ -8,6 +8,7 @@ function initializePage() {
 	//only goes back and forth once?
 	$('#project-list').click(showWIPS);
 	$('#project-button').click(goHome);
+	$('#new-button').click(createProject);
 }
 
 /*
@@ -50,4 +51,17 @@ function goHome(e)
 				<button id="archive-list" type="button" class="btn btn-outline-dark btn-block">Archived Projects</button>
 			</div>
 		</div>`);
+}
+
+function createProject(e)
+{
+	e.preventDefault();
+	$('#main-content').html(`<h1>Create a New Project</h1> 
+		<form action="/action_page.php">
+		 	<input type="text" id="mytextbox" value="Enter your project name" />
+		 	<input type="text" id="mytextbox" value="Enter your project description" />
+  			<input type="submit">
+		</form>`);
+	var test = document.getElementById("mytextbox");
+	alert(textbox.value)
 }
