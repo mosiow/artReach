@@ -9,6 +9,9 @@ function initializePage() {
 	$('#project-list').click(showWIPS);
 	$('#project-button').click(goHome);
 	$('#new-button').click(createProject);
+	$('#friend-button').click(listFriends);
+	$('#notif-button').click(listNotifications);
+	$('#archive-list').click(showArchivedProjects);
 }
 
 /*
@@ -26,8 +29,8 @@ function showWIPS(e) {
   <ul class="list-group">
   <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ New project</h5></a>
   <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 1</h5><small>Me + Arshay</small></div></a>
-  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 1</h5><small>Me + Miranda</small></div></a>
-  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 1</h5><small>Me + 2 others</small></div></a>
+  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 2</h5><small>Me + Miranda</small></div></a>
+  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 3</h5><small>Me + 2 others</small></div></a>
   </ul>`);
 
 	//actually getting info from url to be implemented later
@@ -64,4 +67,43 @@ function createProject(e)
 		</form>`);
 	var test = document.getElementById("mytextbox");
 	alert(textbox.value)
+}
+
+function listFriends(e)
+{
+	e.preventDefault();
+	$('#main-content').html(`<h1>Friends list</h1> 
+		<ul class="list-group">
+	  	<li class="list-group-item">user3483 <span class="badge">X</span></li>
+	  	<li class="list-group-item">iloveart42 <span class="badge">X</span></li>
+	  	<li class="list-group-item">designexpert57 <span class="badge">X</span></li>
+		</ul>
+		<form action="/action_page.php">
+		 	<input type="text" id="mytextbox" value="Search for a friend's ID" />
+  			<input type="submit">
+		</form>`);
+
+
+}
+
+function listNotifications(e)
+{
+	e.preventDefault();
+	$('#main-content').html(`<h1>Friends list</h1> 
+		<li class="list-group-item">You have no notifications <span class="badge">X</span></li>`);
+
+}
+
+function showArchivedProjects(e)
+{
+	e.preventDefault();
+	$('#main-content').html(`<h2>Archived</h2>
+	  <ul class="list-group">
+	  <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ Projects</h5></a>
+	  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Old Project 1</h5><small>Archived on 2/15/21 Me + Arshay</small></div></a>
+	  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Old Project 2</h5><small>Archived on 2/16/21 Me + Miranda</small></div></a>
+	  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Old Project 3</h5><small>Archived on 2/17/21 Me + 2 others</small></div></a>
+	  </ul>`);
+
+
 }
