@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-	<link href="css/introHCI.css" rel="stylesheet">
+	<link href="css/artReach.css" rel="stylesheet">
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -12,28 +12,145 @@
 </head>
 <body>
 	<div class="container-fluid fixed-top" id="top-bar">
-		<div class="btn-group-lg">
-			<button id="back-button" type="button" class="btn btn-outline-dark float-left"><</button>
-			<button id="notif-button" type="button" class="btn btn-outline-dark float-right">Notifs</button>
-		</div>
+		{{#if login}}
+		{{else}}
+			<div class="btn-group-lg">
+				<button id="back-button" type="button" class="btn btn-outline-dark float-left"><</button>
+				<form>
+					<button id="notif-button" type="submit" formmethod="get" formaction="/notif" class="btn-lg btn btn-outline-dark float-right">Notifs</button>
+				</form>
+			</div>
+		{{/if}}
 	</div>
 
 	<div class="container" id="main-content">
-		<h1>ArtReach</h1>
-		<div class="container d-flex align-content-center flex-wrap">
-			<div class="btn-group-lg" id="landing-buttons">
-				<button id="project-list" type="button" class="btn btn-outline-dark btn-block">Project List</button>
-				<button id="archive-list" type="button" class="btn btn-outline-dark btn-block">Archived Projects</button>
+		{{#if login}}
+			<h1>ArtReach</h1>
+			<div class="container d-flex align-content-center flex-wrap">
+				<form method="get" action="/project-home">
+					<h2>Log In</h2>
+					<div class="form-group" id="login-form">
+						<label>Email</label>
+						<input type="email" class="form-control" placeholder="name@example.com">
+						<label>Password</label>
+						<input type="password" class="form-control" placeholder="just press go for now">
+						<button id="go-button" type="submit" class="btn btn-outline-dark">Go</button>
+					</div>
+				</form>
 			</div>
-		</div>
+		{{/if}}
+
+		{{#if project-home}}
+			<h1>Project Home</h1>
+			<div class="container d-flex align-content-center flex-wrap">
+				<div class="btn-group-lg" id="landing-buttons">
+					<form>
+						<button id="project-list" type="submit" formmethod="get" formaction="/wip" class="btn btn-outline-dark btn-lg btn-block">Project List</button>
+						<button id="archive-list" type="submit" formmethod="get" formaction="/archive" class="btn btn-outline-dark btn-lg btn-block">Archived Projects</button>
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if wip-projects}}
+			<h1>Work In Progress</h1>
+				<div class="container">
+					<ul class="list-group">
+						<a href="#" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ New project</h5></a>
+						{{#each projects}}
+							<a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{name}}</h5><small>{{people}}</small></div></a>
+						{{/each}}  	
+				    </ul>
+				</div>
+		{{/if}}
+
+		{{#if archive}}
+			<h1>Archived</h1>
+				<div class="container">
+					<ul class="list-group">
+						{{#each archived}}
+							<a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{name}}</h5><small>{{people}}</small></div></a>
+						{{/each}}  	
+				    </ul>
+				</div>
+		{{/if}}
+
+		{{#if new-project}}
+			<h1>Create a New Project</h1> 
+			<form action="/wip">
+				<div class="form-group" id="login-form">
+					<label>Project Name</label>
+					<input type="text" class="form-control" placeholder="My Project">
+					<label>Description</label>
+					<textarea type="password" class="form-control" placeholder="Write about your new project here"></textarea>
+					<button id="go-button" type="submit" class="btn btn-outline-dark">
+					Create</button>
+				</div>
+			</form>
+		{{/if}}
+
+		{{#if friends}}
+			<h1>Friends</h1>
+				<div class="container">
+					<ul class="list-group">
+						<form id="friend-search" class="form-inline" action="/action_page.php">
+			 				<input class="form-control" type="text" id="mytextbox" placeholder="Search for a friend's ID" />
+	  						<button type="submit" class="btn btn-outline-dark">Search</button>
+						</form>
+						{{#each friend-list}}
+							<a href="#" id="friend" class="list-group-item list-group-item-action"><div class="d-flex justify-content-start"><img src={{thumbnail}}><h5>{{name}}</h5></div></a>
+						{{/each}}  	
+				    </ul>
+				</div>
+		{{/if}}
+
+		{{#if notifs}}
+			<h1>Notifications</h1>
+				<div class="container">
+					<ul class="list-group">
+						{{#each notif-list}}
+							<a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{title}}</h5></div>
+							<small>{{content}}</small></a>
+						{{/each}}  	
+				    </ul>
+				</div>
+		{{/if}}
 	</div>
 
+
 	<div class="jumbotron fixed-bottom" id="bottom-bar">
-		<div class="btn-group-lg d-flex justify-content-around">
-			<button id="project-button" type="button" class="btn btn-outline-dark active">Projects</button>
-			<button id="new-button" type="button" class="btn btn-outline-dark">New Project</button>
-			<button id="friend-button" type="button" class="btn btn-outline-dark">Friends</button>
-		</div>
+		{{#if login}}
+		{{else}}
+			<div class="btn-group-lg d-flex justify-content-around">
+				{{#if project-home}}
+					<div>
+						<button id="project-button" type="button" class="btn-lg btn btn-outline-dark active">Project Home</button>
+					</div>
+				{{else}}
+					<form>
+						<button id="project-button" type="submit" formmethod="get" formaction="/project-home" class="btn-lg btn btn-outline-dark">Project Home</button>
+					</form>
+				{{/if}}
+				{{#if new-project}}
+					<div>
+						<button id="new-button" type="button" class="btn-lg btn btn-outline-dark active">New Project</button>
+					</div>
+				{{else}}
+					<form>
+						<button id="new-button" type="submit" formmethod="get" formaction="/new" class="btn-lg btn btn-outline-dark">New Project</button>
+					</form>
+				{{/if}}
+				{{#if friends}}
+					<div>
+						<button id="friend-button" type="button" class="btn-lg btn btn-outline-dark active">Friend List</button>
+					</div>
+				{{else}}
+					<form>
+						<button id="friend-button" type="submit" formmethod="get" formaction="/friends" class="btn-lg btn btn-outline-dark">Friend List</button>
+					</form>
+				{{/if}}
+			</div>
+		{{/if}}
 	</div>
 </body>
 </html>

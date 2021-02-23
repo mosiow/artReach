@@ -6,12 +6,12 @@ $(document).ready(function() {
 
 function initializePage() {
 	//only goes back and forth once?
-	$('#project-list').click(showWIPS);
-	$('#project-button').click(goHome);
-	$('#new-button').click(createProject);
-	$('#friend-button').click(listFriends);
-	$('#notif-button').click(listNotifications);
-	$('#archive-list').click(showArchivedProjects);
+	//$('#project-list').click(showWIPS);
+	//$('#project-button').click(goHome);
+	//$('#new-button').click(createProject);
+	//$('#friend-button').click(listFriends);
+	//$('#notif-button').click(listNotifications);
+	//$('#archive-list').click(showArchivedProjects);
 }
 
 /*

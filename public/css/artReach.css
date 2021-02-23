@@ -1,6 +1,7 @@
 #bottom-bar
 { 
 	padding: 20px;
+	margin-bottom: 0px;
 }
 
 #top-bar
@@ -32,6 +33,12 @@ h1
 #main-content .container
 {
 	height:50%;
+	overflow: auto;
+}
+
+#go-button
+{
+	margin-top: 15px;
 }
 
 #landing-buttons
@@ -43,4 +50,15 @@ h1
 {
 	margin-top:35px;
 	margin-bottom:35px;
+}
+
+#friend img
+{
+	width: 50px;
+	margin-right: 30px;
+}
+
+#friend-search input
+{
+	margin-right: 12px;
 }

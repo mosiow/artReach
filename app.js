@@ -11,7 +11,6 @@ var handlebars = require('express3-handlebars')
 var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
-//var project = require('./routes/wip'); //add this in too
 
 var app = express();
 
@@ -35,10 +34,17 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/', index.view);
+app.get('/', index.login);
 // Example route
 // app.get('/users', user.list);
-//app.get('/wip', wip.view); //this should work?? but it doesn't.
+app.get('/project-home', index.projectHome);
+app.get('/wip', index.wip);
+app.get('/project:id', index.chat);
+app.get('/archive', index.archive);
+app.get('/new', index.newProject);
+app.get('/friends', index.friends);
+app.get('/friend:id', index.friendProfile);
+app.get('/notif', index.notifs);
 
 
 http.createServer(app).listen(app.get('port'), function(){
