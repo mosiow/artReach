@@ -39,7 +39,7 @@ app.get('/', index.login);
 // app.get('/users', user.list);
 app.get('/project-home', index.projectHome);
 app.get('/wip', index.wip);
-app.get('/project:id', index.chat);
+app.get('/project1', index.chat);
 app.get('/archive', index.archive);
 app.get('/new', index.newProject);
 app.get('/friends', index.friends);

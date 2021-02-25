@@ -32,6 +32,7 @@ h1
 
 #main-content .container
 {
+	min-width: max-content;
 	height:50%;
 	overflow: auto;
 }
