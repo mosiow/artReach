@@ -5,105 +5,119 @@ $(document).ready(function() {
 })
 
 function initializePage() {
-	//only goes back and forth once?
-	//$('#project-list').click(showWIPS);
-	//$('#project-button').click(goHome);
-	//$('#new-button').click(createProject);
-	//$('#friend-button').click(listFriends);
-	//$('#notif-button').click(listNotifications);
-	//$('#archive-list').click(showArchivedProjects);
+	//starts on login page the first time
+	$('#go-button').click(projectHome);
+
+	//NOTE!! If you use a link to go directly to a page,
+	//		 it won't load the click listeners
+
+	/*
+	//click listeners for starting on project home
+	//uncomment if using /project-home to skip login
+	$('#project-list').click(wip);
+	$('#archive-list').click(archive);
+
+	$('#project-button').click(projectHome);
+	$('#new-button').click(newProject);
+	$('#friend-button').click(friendList);
+	*/
+}
+
+function loadPage(result)
+{
+	//ajax load for next page
+	//used in every page!!
+
+	//needs to load main content
+	//and bottom bar status too so... nearly the whole page
+	$("html").html(result);
+
+
+	//PUT ALL CLICK LISTENERS HERE
+
+	//bottom bar
+	$('#project-button').click(projectHome);
+	$('#new-button').click(newProject);
+	$('#friend-button').click(friendList);
+
+	//project-home
+	$('#project-list').click(wip);
+	$('#archive-list').click(archive);
+
+	//wip
+	$('#new-project-button').click(newProject);
+	$('#project').click(projectPage);
+
+	//project page
+	//NEED A WAY TO DIFFERENTIATE WIP AND ARCHIVE PAGES
+	$('#chat-back-button').click(wip);
+	$('#send-button').click(projectPage);
+
+	//archive
+	$('#archive-project').click(projectPage);
+
+	//new project
+	$('#make-new').click(wip);
+
+	//friend list
+	//$('#friend').click(friendPage); //page doesn't exist yet
+
+	//notif
+	$('#notif-button').click(viewNotif);
+}
+
+function login()
+{
+	console.log("Javascript connected!");
+	$.get('/', loadPage);
+}
+
+function projectHome(e)
+{
+	e.preventDefault(e);
+	$.get('/project-home', loadPage);
+}
+
+function wip(e)
+{
+	e.preventDefault(e);
+	$.get('/wip', loadPage);
+}
+
+function projectPage(e)
+{
+	e.preventDefault(e);
+	$.get('/project1', loadPage);
+}
+
+function archive(e)
+{
+	e.preventDefault(e);
+	$.get('/archive', loadPage);
+}
+
+function newProject(e)
+{
+	e.preventDefault();
+	$.get('/new', loadPage);
 }
 
 /*
- * Make an AJAX call to retrieve project details and add it in
- */
-function showWIPS(e) {
+function createNew(e)
+{
+	//submit handler??
 	e.preventDefault();
+	wip();
+}*/
 
-	//this line hides the button all together :"D
-	//$('#project-button').toggle();
-
-
-	// ` marks make it all one string
-	$('#main-content').html(`<h2>Work In Progress</h2>
-  <ul class="list-group">
-  <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ New project</h5></a>
-  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 1</h5><small>Me + Arshay</small></div></a>
-  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 2</h5><small>Me + Miranda</small></div></a>
-  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Project 3</h5><small>Me + 2 others</small></div></a>
-  </ul>`);
-
-	//actually getting info from url to be implemented later
-	//$.get("http://localhost:3000/wip", callback);
-}
-
-//to be implemented later
-function callback(result){
-	
-	$('#main-content').html(result);
-	console.log(result);
-}
-
-function goHome(e)
+function friendList(e)
 {
 	e.preventDefault();
-	$('#main-content').html(`<h1>ArtReach</h1>
-		<div class="container d-flex align-content-center flex-wrap">
-			<div class="btn-group-lg" id="landing-buttons">
-				<button id="project-list" type="button" class="btn btn-outline-dark btn-block">Project List</button>
-				<button id="archive-list" type="button" class="btn btn-outline-dark btn-block">Archived Projects</button>
-			</div>
-		</div>`);
+	$.get('/friends', loadPage);
 }
 
-function createProject(e)
+function viewNotif(e)
 {
 	e.preventDefault();
-	$('#main-content').html(`<h1>Create a New Project</h1> 
-		<form action="/action_page.php">
-		 	<input type="text" id="mytextbox" value="Enter your project name" />
-		 	<input type="text" id="mytextbox" value="Enter your project description" />
-  			<input type="submit">
-		</form>`);
-	var test = document.getElementById("mytextbox");
-	alert(textbox.value)
-}
-
-function listFriends(e)
-{
-	e.preventDefault();
-	$('#main-content').html(`<h1>Friends list</h1> 
-		<ul class="list-group">
-	  	<li class="list-group-item">user3483 <span class="badge">X</span></li>
-	  	<li class="list-group-item">iloveart42 <span class="badge">X</span></li>
-	  	<li class="list-group-item">designexpert57 <span class="badge">X</span></li>
-		</ul>
-		<form action="/action_page.php">
-		 	<input type="text" id="mytextbox" value="Search for a friend's ID" />
-  			<input type="submit">
-		</form>`);
-
-
-}
-
-function listNotifications(e)
-{
-	e.preventDefault();
-	$('#main-content').html(`<h1>Friends list</h1> 
-		<li class="list-group-item">You have no notifications <span class="badge">X</span></li>`);
-
-}
-
-function showArchivedProjects(e)
-{
-	e.preventDefault();
-	$('#main-content').html(`<h2>Archived</h2>
-	  <ul class="list-group">
-	  <a href="#" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ Projects</h5></a>
-	  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Old Project 1</h5><small>Archived on 2/15/21 Me + Arshay</small></div></a>
-	  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Old Project 2</h5><small>Archived on 2/16/21 Me + Miranda</small></div></a>
-	  <a href="#" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>Old Project 3</h5><small>Archived on 2/17/21 Me + 2 others</small></div></a>
-	  </ul>`);
-
-
+	$.get('/notif', loadPage);
 }
