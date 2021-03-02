@@ -35,6 +35,16 @@ function loadPage(result)
 
 	//PUT ALL CLICK LISTENERS HERE
 
+	//top bar
+	$('#profile-function').hide(); //start hidden
+	//first function is on hover, second is off hover
+	$('#profile').hover(profileToggle, profileToggle);
+	$('#your-profile').click(profilePage);
+	$('#default-square').click(defaultTheme);
+	$('#alt-square').click(altTheme);
+	$('#light-square').click(lightTheme);
+	$('#dark-square').click(darkTheme);
+
 	//bottom bar
 	$('#project-button').click(projectHome);
 	$('#new-button').click(newProject);
@@ -61,14 +71,50 @@ function loadPage(result)
 
 	//friend list
 	//$('#friend').click(friendPage); //page doesn't exist yet
+	$('#friend').hover(friendToggle,friendToggle);
 
 	//notif
 	$('#notif-button').click(viewNotif);
 }
 
-function login()
+function profileToggle()
 {
-	console.log("Javascript connected!");
+	$('#profile-function').toggle();
+}
+
+function profilePage(e)
+{
+	e.preventDefault(e);
+	$.get('/profile', loadPage);
+}
+
+function defaultTheme(e)
+{
+	e.preventDefault(e);
+	$.get('/defaultTheme', loadPage);
+}
+
+function altTheme(e)
+{
+	e.preventDefault(e);
+	$.get('/altTheme', loadPage);
+}
+
+function lightTheme(e)
+{
+	e.preventDefault(e);
+	$.get('/lightTheme', loadPage);
+}
+
+function darkTheme(e)
+{
+	e.preventDefault(e);
+	$.get('/darkTheme', loadPage);
+}
+
+function loginPage(e)
+{
+	e.preventDefault(e);
 	$.get('/', loadPage);
 }
 
@@ -114,6 +160,13 @@ function friendList(e)
 {
 	e.preventDefault();
 	$.get('/friends', loadPage);
+}
+
+function friendToggle()
+{
+	//only works on first list item??
+	//help me with selectors plz
+	$('#friend-desc').toggle();
 }
 
 function viewNotif(e)

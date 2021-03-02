@@ -120,3 +120,37 @@ exports.notifs = function(request, response){
 	data['notifs'] = true;
 	response.render('index', data)
 }
+
+
+
+exports.defaultTheme = function(request, response){
+	data['default-theme'] = true;
+	data['alt-theme'] = false;
+	data['light-theme'] = false;
+	data['dark-theme'] = false;
+	response.render('index', data)
+}
+
+exports.altTheme = function(request, response){
+	data['default-theme'] = false;
+	data['alt-theme'] = true;
+	data['light-theme'] = false;
+	data['dark-theme'] = false;
+	response.render('index', data)
+}
+
+exports.lightTheme = function(request, response){
+	data['default-theme'] = false;
+	data['alt-theme'] = false;
+	data['light-theme'] = true;
+	data['dark-theme'] = false;
+	response.render('index', data)
+}
+
+exports.darkTheme = function(request, response){
+	data['default-theme'] = false;
+	data['alt-theme'] = false;
+	data['light-theme'] = false;
+	data['dark-theme'] = true;
+	response.render('index', data)
+}

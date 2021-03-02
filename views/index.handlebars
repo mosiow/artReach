@@ -4,7 +4,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 	<link href="css/artReach.css" rel="stylesheet">
+	{{#if default-theme}}
+	<link href="css/default-theme.css" rel="stylesheet">
+	{{/if}}
+	{{#if alt-theme}}
+	<link href="css/alt-theme.css" rel="stylesheet">
+	{{/if}}
+	{{#if light-theme}}
+	{{/if}}
+	{{#if dark-theme}}
+	<link href="css/dark-theme.css" rel="stylesheet">
+	{{/if}}
 
 	<script src="https://code.jquery.com/jquery.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -15,10 +27,22 @@
 		{{#if login}}
 		{{else}}
 			<div class="container btn-group-lg">
-				<button type="button" class="btn btn-outline-dark float-left rounded-circle"><img src={{profile-pic}} id="profile-pic"></button>
-				<form>
-					<button id="notif-button" type="submit" formmethod="get" formaction="/notif" class="btn-lg btn btn-outline-dark float-right">Notifs</button>
-				</form>
+				<button type="button" class="btn btn-outline-dark float-left" id="profile"><img src={{profile-pic}} id="profile-pic">
+					<div id="profile-function" style="display: none">
+						<p>{{username}}</p>
+						<hr>
+						<small id="your-profile">Your profile</small><br>
+						<small>Theme:</small><br>
+						<div class="d-flex justify-content-between">
+							<div class="theme-square rounded border border-dark" id="default-square"></div>
+							<div class="theme-square rounded border border-dark" id="alt-square"></div>
+							<div class="theme-square rounded border border-dark" id="light-square"></div>
+							<div class="theme-square rounded border border-light" id="dark-square"></div>
+						</div>
+						<small>Log out</small>
+					</div>
+				</button>
+				<button id="notif-button" type="button" class="btn-lg btn btn-outline-dark float-right">🔔</button>
 			</div>
 		{{/if}}
 	</div>
@@ -27,7 +51,7 @@
 		{{#if login}}
 			<h1>ArtReach</h1>
 			<div class="container d-flex align-content-center flex-wrap">
-				<form method="get" action="/project-home">
+				<form>
 					<h2>Log In</h2>
 					<div class="form-group" id="login-form">
 						<label>Email</label>
@@ -96,8 +120,16 @@
 	  						<button type="submit" class="btn btn-outline-dark">Search</button>
 						</form>
 						{{#each friend-list}}
-							<a id="friend" class="list-group-item list-group-item-action"><div class="d-flex justify-content-start"><img src={{thumbnail}}><h5>{{name}}</h5></div></a>
-						{{/each}}  	
+						<a id="friend" class="list-group-item list-group-item-action">
+							<div class="d-flex flex-column">
+								<div class="d-flex justify-content-start">
+									<img src={{thumbnail}}>
+									<h5>{{name}}</h5>
+								</div>
+								<small id="friend-desc" style="display: none">{{description}}</small>
+							</div>
+						</a>
+						{{/each}}
 				    </ul>
 				</div>
 		{{/if}}
@@ -117,33 +149,49 @@
 		{{#if project-chat}}
 			<h1>Project 1</h1>
 
-			<div class="d-flex justify-content-between">
-				<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
+			<div class="container d-flex flex-column">
+				<div class="d-flex justify-content-between">
+					<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
 
-				<form id="friend-search" class="form-inline" action="/project1">
-			 		<input class="form-control" type="text" id="mytextbox" placeholder="Add a friend to this project" />
-	  				<button type="submit" class="btn btn-outline-dark">Search</button>
-				</form>
-			</div>
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="mytextbox" placeholder="Add a friend to this project" />
+		  				<button type="submit" class="btn btn-outline-dark">Search</button>
+					</form>
+				</div>
 
-			<div class="chat-container">
-				{{#each project-chat-list}}
-					<div class="d-flex justify-content-between">
-						<div>
-							<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>
+				<div id="chat">
+					{{#each project-chat-list}}
+						<div class="d-flex justify-content-between">
+							<div>
+								<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>
+							</div>
+							<small class="time-right">11:00</small>
 						</div>
-						<small class="time-right">11:00</small>
-					</div>
-					<p>{{content}}</p>
-				{{/each}}
+						<p>{{content}}</p>
+					{{/each}}
+				</div>
 
-				<form id="friend-search" class="form-inline" action="/project1">
-			 		<input class="form-control" type="text" id="mytextbox" placeholder="Type a status update" />
-	  				<button id="send-button" type="submit" class="btn btn-outline-dark">Send</button>
-				</form>
-				<form action="/project1">
-				    <input type="file" id="myfile" name="myfile"><br><br>
-				</form>
+				<div id="send-message" class="d-flex justify-content-between flex-wrap">
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="mytextbox" placeholder="Type a status update" />
+		  				<button id="send-button" type="submit" class="btn btn-outline-dark">Send</button>
+					</form>
+					<form action="/project1" id="image-upload">
+					    <input type="file" id="myfile" name="myfile">
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if friend-profile}}
+			<h1>My Profile</h1>
+			<div class="container">
+				<div class="d-flex align-items-end justify-content-start">
+					<img src={{profile-pic}}>
+					<h3>{{username}}</h3>
+				</div>
+				<hr>
+				<p>{{profile-desc}}</p>	
 			</div>
 		{{/if}}
 

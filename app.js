@@ -43,8 +43,13 @@ app.get('/project1', index.chat);
 app.get('/archive', index.archive);
 app.get('/new', index.newProject);
 app.get('/friends', index.friends);
-app.get('/friend:id', index.friendProfile);
+app.get('/profile', index.friendProfile); //make it for you or friends?? idk
 app.get('/notif', index.notifs);
+
+app.get('/defaultTheme', index.defaultTheme);
+app.get('/altTheme', index.altTheme);
+app.get('/lightTheme', index.lightTheme);
+app.get('/darkTheme', index.darkTheme);
 
 
 http.createServer(app).listen(app.get('port'), function(){

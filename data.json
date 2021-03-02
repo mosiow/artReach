@@ -9,8 +9,14 @@
 	"friend-profile": false,
 	"notifs": false,
 
+	"default-theme": true,
+	"alt-theme": false,
+	"light-theme": false,
+	"dark-theme": false,
+
 	"username": "cogs120student",
 	"profile-pic": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+	"profile-desc": "Still learning how to do web coding, but that's okay, right?",
 
 	"projects":[
 		{
@@ -71,15 +77,18 @@
 	"friend-list":[
 		{
 			"name": "user3483",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png"
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+			"description": "I think I'm an artist? Idk"
 		},
 		{
 			"name": "iloveart42",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png"
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+			"description": "Give me option A and option B and I will make an option C. Every time."
 		},
 		{
 			"name": "designexpert57",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308106145792001/Lorelei_Scared.png"
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308106145792001/Lorelei_Scared.png",
+			"description": "Professional UwU"
 		}
 	],
 

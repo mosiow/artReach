@@ -1,0 +1,50 @@
+html
+{
+	background-color: #b0dbde;
+}
+
+h1
+{
+	color: #934f6c;
+}
+
+#main-content button
+{
+	background-color: #dedcb0;
+}
+
+#main-content button:hover
+{
+	background-color: #8f8d69;
+}
+
+#main-content a
+{
+	background-color: #dedcb0;
+}
+
+
+#bottom-bar button
+{
+	background-color: #b0dbde;
+}
+
+#bottom-bar button:hover
+{
+	background-color: #934f6c;
+}
+
+.jumbotron
+{
+	background-color: #3b777c;
+}
+
+#top-bar button
+{
+	background-color: #deb0c9;
+}
+
+#top-bar button:hover
+{
+	background-color: #934f6c;
+}
