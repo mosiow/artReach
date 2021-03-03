@@ -24,8 +24,8 @@
 </head>
 <body>
 	<div class="container-fluid fixed-top" id="top-bar">
-		{{#if login}}
-		{{else}}
+		{{#if logged-in}}
+		
 			<div class="container btn-group-lg">
 				<button type="button" class="btn btn-outline-dark float-left" id="profile"><img src={{profile-pic}} id="profile-pic">
 					<div id="profile-function" style="display: none">
@@ -39,7 +39,7 @@
 							<div class="theme-square rounded border border-dark" id="light-square"></div>
 							<div class="theme-square rounded border border-light" id="dark-square"></div>
 						</div>
-						<small>Log out</small>
+						<small id="return-home">Log out</small>
 					</div>
 				</button>
 				<button id="notif-button" type="button" class="btn-lg btn btn-outline-dark float-right">🔔</button>
@@ -51,25 +51,77 @@
 		{{#if login}}
 			<h1>ArtReach</h1>
 			<div class="container d-flex align-content-center flex-wrap">
-				<form>
-					<h2>Log In</h2>
-					<div class="form-group" id="login-form">
-						<label>Email</label>
-						<input type="email" class="form-control" placeholder="name@example.com">
-						<label>Password</label>
-						<input type="password" class="form-control" placeholder="just press go for now">
-						<button id="go-button" type="submit" class="btn btn-outline-dark">Go</button>
-					</div>
-				</form>
+				
+	            
+
+	            <!-- {{#if success}}
+	            <div class="alert alert-success alert-dismissible fade show">
+	                <strong>{{success}}</strong>
+	                <button class="close" data-dismiss="alert"><span>&times;</span></button>
+            	</div>
+            	{{/if}}
+            	{{#if error}}
+            	<div class="alert alert-danger alert-dismissible fade show">
+                	<strong>{{error}}</strong>
+                	<button class="close" data-dismiss="alert"><span>&times;</span></button>
+            	</div>
+            	{{/if}} -->
+
+            	<form id="login-form" class= "align-content-center">
+             		<h1>Log In</h1>
+                	<div class="form-group d-flex flex-column">
+                    	<label for="email">Email ID <span class="text-danger">*</span></label>
+                    	<input type="email" class="form-control" name="username" id="email" placeholder="Enter your email ID">
+                	
+                	
+                    	<label for="password">Password <span class="text-danger">*</span></label>
+                    	<input type="password" class="form-control" name="password" id="password" placeholder="Enter Your Password">
+                	
+                	
+                    	<input type="submit" id='go-button' value="Login" class="btn btn-info btn-block">
+                	
+                	</div>
+
+                	<div class="row">
+                   		<div class="col-md-8">
+                       		New user? Register <button class ="btn btn-outline-dark" id="signup-button">here!</button>
+
+                       	</div>
+                    </div>
+
+
+
+                	<button class ="btn btn-outline-dark" id="forgot-button">Forgot password?</button>
+            	
 			</div>
 		{{/if}}
+
+
+		{{#if register}}
+
+			<h1>Sign-Up</h1>
+				<div class="container">
+					<button id='return-home' type="button" class ="btn btn-outline-dark btn-lg btn-block">Register</button>
+				</div>
+
+		{{/if}}
+
+		{{#if forgotPassword}}
+
+  				<h1>Reset Password</h1>
+  				<div class="container">
+    				<button id='return-home' type='button' class="btn btn-outline-dark btn-lg btn-block">Reset Password</button>
+  				</div>
+
+		{{/if}}
+
 
 		{{#if project-home}}
 			<h1>Project Home</h1>
 			<div class="container d-flex align-content-center flex-wrap">
-				<div class="btn-group-lg" id="landing-buttons">
-					<button id="project-list" type="button" class="btn btn-outline-dark btn-lg btn-block">Project List</button>
-					<button id="archive-list" type="button" class="btn btn-outline-dark btn-lg btn-block">Archived Projects</button>
+				<div class="btn-group-lg d-flex flex-column" id="landing-buttons">
+					<button id="project-list" type="button" class="btn btn-outline-dark btn-lg">Project List</button>
+					<button id="archive-list" type="button" class="btn btn-outline-dark btn-lg">Archived Projects</button>
 				</div>
 			</div>
 		{{/if}}
@@ -200,8 +252,7 @@
 
 
 	<div class="jumbotron fixed-bottom" id="bottom-bar">
-		{{#if login}}
-		{{else}}
+		{{#if logged-in}}
 			<div class="btn-group-lg d-flex justify-content-around">
 				{{#if project-home}}
 					<button id="project-button" type="button" class="btn-lg btn btn-outline-dark active">Project Home</button>

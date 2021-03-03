@@ -38,6 +38,8 @@ app.get('/', index.login);
 // Example route
 // app.get('/users', user.list);
 app.get('/project-home', index.projectHome);
+app.get('/register', index.register);
+app.get('/forgotPassword', index.forgotPassword);
 app.get('/wip', index.wip);
 app.get('/project1', index.chat);
 app.get('/archive', index.archive);

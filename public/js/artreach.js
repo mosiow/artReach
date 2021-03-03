@@ -7,6 +7,10 @@ $(document).ready(function() {
 function initializePage() {
 	//starts on login page the first time
 	$('#go-button').click(projectHome);
+	$('#signup-button').click(register);
+	$('#forgot-button').click(forgotPassword);
+
+
 
 	//NOTE!! If you use a link to go directly to a page,
 	//		 it won't load the click listeners
@@ -49,6 +53,17 @@ function loadPage(result)
 	$('#project-button').click(projectHome);
 	$('#new-button').click(newProject);
 	$('#friend-button').click(friendList);
+
+	//register
+	$('#signup-button').click(register);
+
+
+	//forogtPassword
+	$('#forgot-button').click(forgotPassword);
+
+	//return to login screen
+	$('#return-home').click(loginPage);
+
 
 	//project-home
 	$('#project-list').click(wip);
@@ -116,6 +131,19 @@ function loginPage(e)
 {
 	e.preventDefault(e);
 	$.get('/', loadPage);
+}
+
+function forgotPassword(e)
+{
+	e.preventDefault(e);
+	$.get('/forgotPassword', loadPage);
+}
+
+function register(e)
+{
+	e.preventDefault(e);
+	$.get('/register', loadPage);
+	console.log('hello im working!');
 }
 
 function projectHome(e)

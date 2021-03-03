@@ -6,6 +6,9 @@ exports.view = function(req, res){
 
 exports.login = function(request, response){
 	data['login'] = true;
+	data['logged-in'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;
@@ -17,8 +20,41 @@ exports.login = function(request, response){
 	response.render('index', data)
 }
 
+exports.register = function(request, response){
+	data['login'] = false;
+	data['register'] = true;
+	data['forgotPassword'] = false;
+	data['project-home'] = false;
+	data['wip-projects'] = false;
+	data['project-chat'] = false;
+	data['archive'] = false;
+	data['new-project'] = false;
+	data['friends'] = false;
+	data['friend-profile'] = false;
+	data['notifs'] = false;
+	response.render('index', data)
+}
+
+exports.forgotPassword = function(request, response){
+	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = true;
+	data['project-home'] = false;
+	data['wip-projects'] = false;
+	data['project-chat'] = false;
+	data['archive'] = false;
+	data['new-project'] = false;
+	data['friends'] = false;
+	data['friend-profile'] = false;
+	data['notifs'] = false;
+	response.render('index', data)
+}	
+
 exports.projectHome = function(request, response){
 	data['login'] = false;
+	data['logged-in'] = true;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = true;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;
@@ -32,6 +68,8 @@ exports.projectHome = function(request, response){
 
 exports.wip = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = true;
 	data['project-chat'] = false;
@@ -45,6 +83,8 @@ exports.wip = function(request, response){
 
 exports.chat = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = true;
@@ -58,6 +98,8 @@ exports.chat = function(request, response){
 
 exports.archive = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;
@@ -71,6 +113,8 @@ exports.archive = function(request, response){
 
 exports.newProject = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;
@@ -84,6 +128,8 @@ exports.newProject = function(request, response){
 
 exports.friends = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;
@@ -97,6 +143,8 @@ exports.friends = function(request, response){
 
 exports.friendProfile = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;
@@ -110,6 +158,8 @@ exports.friendProfile = function(request, response){
 
 exports.notifs = function(request, response){
 	data['login'] = false;
+	data['register'] = false;
+	data['forgotPassword'] = false;
 	data['project-home'] = false;
 	data['wip-projects'] = false;
 	data['project-chat'] = false;

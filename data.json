@@ -1,5 +1,8 @@
 {
 	"login": true,
+	"logged-in": false,
+	"register": false,
+	"forgotPassword": false,
   	"project-home": false,
 	"wip-projects": false,
 	"project-chat": false,
