@@ -1,4 +1,105 @@
+/*colors:
+dark green
+#738f51
+light green
+#c5daab
+
+light orange
+#e9c88f
+burnt orange
+#9e6c40
+
+purple
+#c7a7d3
+darker purple
+#93739f
+*/
+
+/*background of page*/
 html
 {
 	background-color: #738f51;
+}
+
+/*title colors*/
+h1
+{
+	color: #e9c88f;
+}
+
+/*button color*/
+#main-content button
+{
+	background-color: #c7a7d3;
+}
+
+/*button hover is slightly darker*/
+#main-content button:hover
+{
+	background-color: #93739f;
+}
+
+/*background of list items*/
+#main-content a
+{
+	background-color: #c5daab;
+}
+
+/*list item hover is slightly darker*/
+#main-content a:hover
+{
+	background-color: #e9c88f;
+}
+
+/*contrasting list item*/
+ul #new-project-button
+{
+	background-color: #c7a7d3;
+}
+
+ul #new-project-button:hover
+{
+	background-color: #93739f;
+}
+
+/*3 buttons at bottom*/
+#bottom-bar button
+{
+	background-color: #e9c88f;
+}
+
+/*button hover is contrasting color*/
+#bottom-bar button:hover
+{
+	background-color: #9e6c40;
+}
+
+/*button active color, make same as hover color*/
+#bottom-bar a
+{
+	background-color: #9e6c40;
+}
+
+/*bottom bar background*/
+.jumbotron
+{
+	background-color: #c5daab;
+}
+
+/*profile and notif buttons*/
+#top-bar button
+{
+	background-color: #e9c88f;
+}
+
+/*button hover is slightly darker*/
+#top-bar button:hover
+{
+	background-color: #9e6c40;
+}
+
+/*list item hover is lighter, like original button color*/
+#profile-function small:hover
+{
+	background-color: #e9c88f;
 }

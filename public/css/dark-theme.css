@@ -1,14 +1,100 @@
+/*
+light cyan
+#b0dbde
+dark cyan
+#3b777c
+
+others
+ccc
+888
+333
+*/
+
+/*background of page*/
 html
 {
-	background-color: #343a40;
+	background-color: #333;
 }
 
+/*title colors*/
+h1
+{
+	color: #b0dbde;
+}
+
+/*button color*/
 #main-content button
 {
-	background-color: #ffffff;
+	background-color: #ccc;
 }
 
+/*button hover is slightly darker*/
+#main-content button:hover
+{
+	background-color: #888;
+}
+
+/*background of list items*/
+#main-content a
+{
+	background-color: #ccc;
+}
+
+/*list item hover is slightly darker*/
+#main-content a:hover
+{
+	background-color: #888;
+}
+
+/*contrasting list item*/
+ul #new-project-button
+{
+	background-color: #b0dbde;
+}
+
+ul #new-project-button:hover
+{
+	background-color: #3b777c;
+}
+
+/*3 buttons at bottom*/
+#bottom-bar button
+{
+	background-color: #b0dbde;
+}
+
+/*button hover is contrasting color*/
+#bottom-bar button:hover
+{
+	background-color: #3b777c;
+}
+
+/*button active color, make same as hover color*/
+#bottom-bar a
+{
+	background-color: #3b777c;
+}
+
+/*bottom bar background*/
+.jumbotron
+{
+	background-color: #888;
+}
+
+/*profile and notif buttons*/
 #top-bar button
 {
-	background-color: #cccccc;
+	background-color: #b0dbde;
+}
+
+/*button hover is slightly darker*/
+#top-bar button:hover
+{
+	background-color: #3b777c;
+}
+
+/*list item hover is lighter, like original button color*/
+#profile-function small:hover
+{
+	background-color: #b0dbde;
 }

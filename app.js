@@ -12,8 +12,6 @@ var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
 
-var bodyParser = require('body-parser');
-
 var app = express();
 
 // all environments
@@ -28,10 +26,6 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('IxD secret key'));
 app.use(express.session());
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded( { extended: false}));
-
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -48,7 +42,7 @@ app.get('/project-home', index.projectHome);
 app.get('/register', index.register);
 app.get('/forgotPassword', index.forgotPassword);
 app.get('/wip', index.wip);
-app.get('/createProject', index.createProject);
+app.post('/createProject', index.createProject); //make sure to use post!
 app.get('/project1', index.chat);
 app.get('/archive', index.archive);
 app.get('/new', index.newProject);

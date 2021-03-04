@@ -67,7 +67,7 @@
             	</div>
             	{{/if}} -->
 
-            	<form id="login-form" class= "align-content-center">
+            	<form id="login-form" class= "container">
              		<h1>Log In</h1>
                 	<div class="form-group d-flex flex-column">
                     	<label for="email">Email ID <span class="text-danger">*</span></label>
@@ -82,16 +82,12 @@
                 	
                 	</div>
 
-                	<div class="row">
-                   		<div class="col-md-8">
-                       		New user? Register <button class ="btn btn-outline-dark" id="signup-button">here!</button>
+					<div class="d-flex justify-content-between flex-wrap">
+                       	<div>New user? <button class ="btn btn-outline-dark" id="signup-button">Register here!</button></div>
 
-                       	</div>
+                       	<button class ="btn btn-outline-dark" id="forgot-button">Forgot password?</button>
                     </div>
 
-
-
-                	<button class ="btn btn-outline-dark" id="forgot-button">Forgot password?</button>
             	
 			</div>
 		{{/if}}
@@ -130,9 +126,19 @@
 			<h1>Work In Progress</h1>
 				<div class="container">
 					<ul class="list-group">
-						<a id="new-project-button" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ New project</h5></a>
+						<a id="new-project-button" class="list-group-item list-group-item-action list-group-item-dark">
+							<h5>+ New project</h5>
+						</a>
 						{{#each projects}}
-							<a id="project" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{name}} - {{description}}</h5><small>Created: {{date}} | {{people}}</small></div></a>
+							<a id="project" class="list-group-item list-group-item-action">
+								<div class="d-flex justify-content-between">
+									<h5>{{name}}</h5>
+									<small class="justify-content-between flex-wrap">
+										<p>Created: {{date}}</p>
+										<p>Artists: {{people}}</p></small>
+								</div>
+								{{description}}
+							</a>
 						{{/each}}  	
 				    </ul>
 				</div>
@@ -143,7 +149,16 @@
 				<div class="container">
 					<ul class="list-group">
 						{{#each archived}}
-							<a id="archive-project" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{name}}</h5><small>Archived on: {{date}} | {{people}}</small></div></a>
+							<a id="archive-project" class="list-group-item list-group-item-action">
+								<div class="d-flex justify-content-between">
+									<h5>{{name}}</h5>
+									<small class="justify-content-between flex-wrap">
+										<p>Archived: {{date}}</p>
+										<p>Artists: {{people}}</p>
+									</small>
+								</div>
+								{{description}}
+							</a>
 						{{/each}}  	
 				    </ul>
 				</div>
@@ -151,17 +166,17 @@
 
 		{{#if new-project}}
 			<h1>Create a New Project</h1> 
-			<form action='http:/localhost:3000' method='POST'>
+			<form>
 				<div class="container form-group" id="new-project-form">
 					<div class="form-group">
-						<label for="name">Project Name</label>
-						<input type="text" class="form-control" placeholder="My Project" id="project-name" name="name">
+						<label>Project Name</label>
+						<input type="text" class="form-control" placeholder="My Project" id="project-name">
 					</div>
 					<div class="form-group">
-						<label for="description">Description</label>
-						<input type="text" class="form-control" placeholder="Write about your new project here" id="description" name="description">
+						<label>Description</label>
+						<input type="text" class="form-control" placeholder="Write about your new project here" id="project-description">
 					</div>
-					<button id="make-new" type="submit" class="btn btn-outline-dark">
+					<button id="make-new" class="btn btn-outline-dark">
 					Create</button>
 				</div>
 			</form>
@@ -175,17 +190,19 @@
 			 				<input class="form-control" type="text" id="mytextbox" placeholder="Search for a friend's ID" />
 	  						<button id="search-button" type="submit" class="btn btn-outline-dark">Add Friend</button>
 						</form>
-						{{#each friendList}}
-						<a id="friend" class="list-group-item list-group-item-action">
-							<div class="d-flex flex-column">
-								<div class="d-flex justify-content-start">
-									<img src={{thumbnail}}>
-									<h5>{{name}}</h5>
+						<div id="friends-list">
+							{{#each friendList}}
+							<a id="friend" class="list-group-item list-group-item-action">
+								<div class="d-flex flex-column">
+									<div class="d-flex justify-content-start">
+										<img src={{thumbnail}}>
+										<h5>{{name}}</h5>
+									</div>
+									<small id="friend-desc" style="display: none">{{description}}</small>
 								</div>
-								<small id="friend-desc" style="display: none">{{description}}</small>
-							</div>
-						</a>
-						{{/each}}
+							</a>
+							{{/each}}
+						</div>
 				    </ul>
 				</div>
 		{{/if}}
@@ -259,17 +276,17 @@
 		{{#if logged-in}}
 			<div class="btn-group-lg d-flex justify-content-around">
 				{{#if project-home}}
-					<button id="project-button" type="button" class="btn-lg btn btn-outline-dark active">Project Home</button>
+					<a id="project-button" type="button" class="btn-lg btn btn-outline-dark active">Project Home</a>
 				{{else}}
 					<button id="project-button" type="button" class="btn-lg btn btn-outline-dark">Project Home</button>
 				{{/if}}
 				{{#if new-project}}
-					<button id="new-button" type="button" class="btn-lg btn btn-outline-dark active">New Project</button>
+					<a id="new-button" type="button" class="btn-lg btn btn-outline-dark active">New Project</a>
 				{{else}}
 					<button id="new-button" type="button" class="btn-lg btn btn-outline-dark">New Project</button>
 				{{/if}}
 				{{#if friends}}
-					<button id="friend-button" type="button" class="btn-lg btn btn-outline-dark active">Friend List</button>
+					<a id="friend-button" type="button" class="btn-lg btn btn-outline-dark active">Friend List</a>
 				{{else}}
 					<button id="friend-button" type="button" class="btn-lg btn btn-outline-dark">Friend List</button>
 				{{/if}}

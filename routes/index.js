@@ -23,15 +23,6 @@ exports.login = function(request, response){
 exports.register = function(request, response){
 	data['login'] = false;
 	data['register'] = true;
-	data['forgotPassword'] = false;
-	data['project-home'] = false;
-	data['wip-projects'] = false;
-	data['project-chat'] = false;
-	data['archive'] = false;
-	data['new-project'] = false;
-	data['friends'] = false;
-	data['friend-profile'] = false;
-	data['notifs'] = false;
 	response.render('index', data)
 }
 
@@ -206,16 +197,19 @@ exports.darkTheme = function(request, response){
 }
 
 
-exports.createProject = function(request, response) {    
+exports.createProject = function(request, response) { 
+	// to fill in things from post in artreach.js,
+	// use request.body.varName  
+	var today = new Date();
+	var createDate = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+
 	newProject = {
-		name: "Project 1",
-		description: "this project is a test",
-		people: "Me",
-		date: "March 3 2021"
+		name: request.body.name,
+		description: request.body.description,
+		people: ["Me"],
+		date: createDate
 	};
-	console.log(newProject);
 	data.projects.push(newProject);
-	response.send(newProject);
  }
 
 exports.addFriend = function(request, response) {

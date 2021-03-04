@@ -84,11 +84,11 @@ function loadPage(result)
 
 	//new project
 	$('#make-new').click(createNew);
-	receiveProject();
+	//receiveProject();
 
 	//friend list
 	//$('#friend').click(friendPage); //page doesn't exist yet
-	$('#friend').hover(friendToggle,friendToggle);
+	$('#friends-list a').hover(friendToggle,friendToggle); //select only 1 list item
 	$('#search-button').click(addFriend);
 
 	//notif
@@ -146,7 +146,6 @@ function register(e)
 {
 	e.preventDefault(e);
 	$.get('/register', loadPage);
-	console.log('hello im working!');
 }
 
 function projectHome(e)
@@ -194,9 +193,14 @@ function inviteFriend(e)
 
 function createNew(e)
 {
-	//submit handler??
 	e.preventDefault();
-	$.get('/createProject', loadPage);
+
+	//set variables for values currently contained in form items
+	var projectName = $('#project-name').val();
+	var projectDesc = $('#project-description').val();
+
+	$.post('/createProject', { name: projectName,
+		description: projectDesc });
 	$.get('/wip', loadPage);
 }
 
@@ -216,9 +220,9 @@ function addFriend(e)
 
 function friendToggle()
 {
-	//only works on first list item??
-	//help me with selectors plz
-	$('#friend-desc').toggle();
+	//find description in list item
+	var desc = $(this).find("small");
+	$(desc).toggle();
 }
 
 function viewNotif(e)
