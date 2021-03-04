@@ -12,6 +12,8 @@ var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
 
+var bodyParser = require('body-parser');
+
 var app = express();
 
 // all environments
@@ -26,8 +28,13 @@ app.use(express.urlencoded());
 app.use(express.methodOverride());
 app.use(express.cookieParser('IxD secret key'));
 app.use(express.session());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded( { extended: false}));
+
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -41,13 +48,16 @@ app.get('/project-home', index.projectHome);
 app.get('/register', index.register);
 app.get('/forgotPassword', index.forgotPassword);
 app.get('/wip', index.wip);
+app.get('/createProject', index.createProject);
 app.get('/project1', index.chat);
 app.get('/archive', index.archive);
 app.get('/new', index.newProject);
 app.get('/friends', index.friends);
+app.get('/addFriend', index.addFriend);
 app.get('/profile', index.friendProfile); //make it for you or friends?? idk
 app.get('/notif', index.notifs);
-
+app.get('/chatMessage', index.sendMessage);
+app.get('/inviteFriend', index.inviteFriend);
 app.get('/defaultTheme', index.defaultTheme);
 app.get('/altTheme', index.altTheme);
 app.get('/lightTheme', index.lightTheme);

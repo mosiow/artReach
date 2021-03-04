@@ -76,17 +76,20 @@ function loadPage(result)
 	//project page
 	//NEED A WAY TO DIFFERENTIATE WIP AND ARCHIVE PAGES
 	$('#chat-back-button').click(wip);
-	$('#send-button').click(projectPage);
+	$('#send-button').click(sendMessage);
+	$('#invite-button').click(inviteFriend);
 
 	//archive
 	$('#archive-project').click(projectPage);
 
 	//new project
-	$('#make-new').click(wip);
+	$('#make-new').click(createNew);
+	receiveProject();
 
 	//friend list
 	//$('#friend').click(friendPage); //page doesn't exist yet
 	$('#friend').hover(friendToggle,friendToggle);
+	$('#search-button').click(addFriend);
 
 	//notif
 	$('#notif-button').click(viewNotif);
@@ -176,18 +179,39 @@ function newProject(e)
 	$.get('/new', loadPage);
 }
 
-/*
+function sendMessage(e)
+{
+	e.preventDefault();
+	$.get('/chatMessage', loadPage);
+	$.get('/project1', loadPage);
+}
+
+function inviteFriend(e)
+{
+	e.preventDefault();
+	$.get('/inviteFriend', loadPage);
+}
+
 function createNew(e)
 {
 	//submit handler??
 	e.preventDefault();
-	wip();
-}*/
+	$.get('/createProject', loadPage);
+	$.get('/wip', loadPage);
+}
 
 function friendList(e)
 {
 	e.preventDefault();
 	$.get('/friends', loadPage);
+}
+
+function addFriend(e)
+{
+	e.preventDefault();
+	$.get('/addFriend', loadPage);
+	$.get('/friends', loadPage);
+
 }
 
 function friendToggle()
@@ -201,4 +225,20 @@ function viewNotif(e)
 {
 	e.preventDefault();
 	$.get('/notif', loadPage);
+}
+
+function receiveProject()
+{
+	$('#projectForm').submit(function(e){
+		e.preventDefault();
+		var newProject = $('#newProject').val();
+		$.post('createProject', { newProject: newProject}, postCallback);
+
+	});
+
+	function postCallback(res)
+	{
+		alert("It worked");
+		$('#newProject').val('');
+	}
 }

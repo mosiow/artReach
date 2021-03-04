@@ -132,7 +132,7 @@
 					<ul class="list-group">
 						<a id="new-project-button" class="list-group-item list-group-item-action list-group-item-dark"><h5>+ New project</h5></a>
 						{{#each projects}}
-							<a id="project" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{name}}</h5><small>Created: {{date}} | {{people}}</small></div></a>
+							<a id="project" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{name}} - {{description}}</h5><small>Created: {{date}} | {{people}}</small></div></a>
 						{{/each}}  	
 				    </ul>
 				</div>
@@ -151,12 +151,16 @@
 
 		{{#if new-project}}
 			<h1>Create a New Project</h1> 
-			<form action="/wip">
+			<form action='http:/localhost:3000' method='POST'>
 				<div class="container form-group" id="new-project-form">
-					<label>Project Name</label>
-					<input type="text" class="form-control" placeholder="My Project">
-					<label>Description</label>
-					<textarea type="password" class="form-control" placeholder="Write about your new project here"></textarea>
+					<div class="form-group">
+						<label for="name">Project Name</label>
+						<input type="text" class="form-control" placeholder="My Project" id="project-name" name="name">
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<input type="text" class="form-control" placeholder="Write about your new project here" id="description" name="description">
+					</div>
 					<button id="make-new" type="submit" class="btn btn-outline-dark">
 					Create</button>
 				</div>
@@ -169,9 +173,9 @@
 					<ul class="list-group">
 						<form id="friend-search" class="form-inline" action="/friends">
 			 				<input class="form-control" type="text" id="mytextbox" placeholder="Search for a friend's ID" />
-	  						<button type="submit" class="btn btn-outline-dark">Search</button>
+	  						<button id="search-button" type="submit" class="btn btn-outline-dark">Add Friend</button>
 						</form>
-						{{#each friend-list}}
+						{{#each friendList}}
 						<a id="friend" class="list-group-item list-group-item-action">
 							<div class="d-flex flex-column">
 								<div class="d-flex justify-content-start">
@@ -207,12 +211,12 @@
 
 					<form id="friend-search" class="form-inline" action="/project1">
 				 		<input class="form-control" type="text" id="mytextbox" placeholder="Add a friend to this project" />
-		  				<button type="submit" class="btn btn-outline-dark">Search</button>
+		  				<button id="invite-button" type="submit" class="btn btn-outline-dark">Search</button>
 					</form>
 				</div>
 
 				<div id="chat">
-					{{#each project-chat-list}}
+					{{#each projectMessages}}
 						<div class="d-flex justify-content-between">
 							<div>
 								<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>

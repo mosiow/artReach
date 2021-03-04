@@ -18,30 +18,12 @@
 	"dark-theme": false,
 
 	"username": "cogs120student",
+	"password": "readyfortesting1",
 	"profile-pic": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
 	"profile-desc": "Still learning how to do web coding, but that's okay, right?",
 
 	"projects":[
-		{
-			"name": "Project 1",
-			"people": "Me + 3 others",
-			"date": "February 24th 2021"
-		},
-		{
-			"name": "Project 2",
-			"people": "Me + designexpert57",
-			"date": "February 24th 2021"
-		},
-		{
-			"name": "Project 3",
-			"people": "Me + iloveart42",
-			"date": "February 24th 2021"
-		},
-		{
-			"name": "Project 4",
-			"people": "Me + 2 others",
-			"date": "February 24th 2021"
-		}
+
 	],
 
 	"archived":[
@@ -77,22 +59,8 @@
 		}
 	],
 
-	"friend-list":[
-		{
-			"name": "user3483",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
-			"description": "I think I'm an artist? Idk"
-		},
-		{
-			"name": "iloveart42",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
-			"description": "Give me option A and option B and I will make an option C. Every time."
-		},
-		{
-			"name": "designexpert57",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308106145792001/Lorelei_Scared.png",
-			"description": "Professional UwU"
-		}
+	"friendList":[
+
 	],
 
 	"notif-list":[
@@ -106,23 +74,12 @@
 		}
 	],
 
-	"project-chat-list":[
+	"projectMessages":[
 		{
-			"name": "user3483",
+			"name": "cogs120student",
 			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
-			"content": "Hey what should I draw today?"
-		},
-		{
-			"name": "iloveart42",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
-			"content": "Draw a squirrel"
-		},
-		{
-			"name": "designexpert57",
-			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308106145792001/Lorelei_Scared.png",
-			"content": "A blue squirrel"
+			"content": "cogs120student has entered the project."
 		}
-
 	]
 
 }
