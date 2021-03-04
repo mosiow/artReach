@@ -71,7 +71,7 @@
              		<h1>Log In</h1>
                 	<div class="form-group d-flex flex-column">
                     	<label for="email">Email ID <span class="text-danger">*</span></label>
-                    	<input type="email" class="form-control" name="username" id="email" placeholder="Enter your email ID">
+                    	<input type="email" class="form-control" name="email" id="email" placeholder="Enter your email ID">
                 	
                 	
                     	<label for="password">Password <span class="text-danger">*</span></label>
@@ -186,8 +186,8 @@
 			<h1>Friends</h1>
 				<div class="container">
 					<ul class="list-group">
-						<form id="friend-search" class="form-inline" action="/friends">
-			 				<input class="form-control" type="text" id="mytextbox" placeholder="Search for a friend's ID" />
+						<form id="friend-search" class="form-inline">
+			 				<input class="form-control" type="text" id="friend-name" placeholder="Search for a friend's ID" />
 	  						<button id="search-button" type="submit" class="btn btn-outline-dark">Add Friend</button>
 						</form>
 						<div id="friends-list">
@@ -227,7 +227,7 @@
 					<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
 
 					<form id="friend-search" class="form-inline" action="/project1">
-				 		<input class="form-control" type="text" id="mytextbox" placeholder="Add a friend to this project" />
+				 		<input class="form-control" type="text" id="invite-name" placeholder="Add a friend to this project" />
 		  				<button id="invite-button" type="submit" class="btn btn-outline-dark">Search</button>
 					</form>
 				</div>
@@ -246,7 +246,7 @@
 
 				<div id="send-message" class="d-flex justify-content-between flex-wrap">
 					<form id="friend-search" class="form-inline" action="/project1">
-				 		<input class="form-control" type="text" id="mytextbox" placeholder="Type a status update" />
+				 		<input class="form-control" type="text" id="message" placeholder="Type a status update" />
 		  				<button id="send-button" type="submit" class="btn btn-outline-dark">Send</button>
 					</form>
 					<form action="/project1" id="image-upload">

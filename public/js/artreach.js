@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 function initializePage() {
 	//starts on login page the first time
-	$('#go-button').click(projectHome);
+	$('#go-button').click(projectLogin);
 	$('#signup-button').click(register);
 	$('#forgot-button').click(forgotPassword);
 
@@ -43,6 +43,7 @@ function loadPage(result)
 	$('#profile-function').hide(); //start hidden
 	//first function is on hover, second is off hover
 	$('#profile').hover(profileToggle, profileToggle);
+	$('#go-button').click(projectLogin);
 	$('#your-profile').click(profilePage);
 	$('#default-square').click(defaultTheme);
 	$('#alt-square').click(altTheme);
@@ -181,14 +182,25 @@ function newProject(e)
 function sendMessage(e)
 {
 	e.preventDefault();
-	$.get('/chatMessage', loadPage);
+	var chatMessage = $('#message').val();
+
+	$.post('/chatMessage', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		content: chatMessage});
 	$.get('/project1', loadPage);
 }
 
 function inviteFriend(e)
 {
 	e.preventDefault();
-	$.get('/inviteFriend', loadPage);
+	var friendName = $('#invite-name').val();
+
+	$.post('/inviteFriend', {
+		name: friendName,
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+	});
+	$.get('/project1', loadPage);
 }
 
 function createNew(e)
@@ -199,7 +211,8 @@ function createNew(e)
 	var projectName = $('#project-name').val();
 	var projectDesc = $('#project-description').val();
 
-	$.post('/createProject', { name: projectName,
+	$.post('/createProject', { 
+		name: projectName,
 		description: projectDesc });
 	$.get('/wip', loadPage);
 }
@@ -213,7 +226,12 @@ function friendList(e)
 function addFriend(e)
 {
 	e.preventDefault();
-	$.get('/addFriend', loadPage);
+	var friendName = $('#friend-name').val();
+
+	$.post('/addFriend', {
+		name: friendName, 
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+		description: "I hope you're ready to draw!" });
 	$.get('/friends', loadPage);
 
 }
@@ -245,4 +263,23 @@ function receiveProject()
 		alert("It worked");
 		$('#newProject').val('');
 	}
+}
+
+function projectLogin(e){
+	e.preventDefault();
+	var email = $('#email').val();
+	var password = $('#password').val();
+	console.log(email + " " + password);
+
+	var actualEmail = "cogs120student@ucsd.edu"
+	var actualPassword = "readyfortesting1"
+
+
+	if(actualEmail === email && actualPassword === password){
+		console.log("SUCCESS");
+		$.get('/project-home', loadPage);
+	}else{
+		console.log("FAILED LOGIN");
+	}
+	
 }

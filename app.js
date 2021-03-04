@@ -47,11 +47,11 @@ app.get('/project1', index.chat);
 app.get('/archive', index.archive);
 app.get('/new', index.newProject);
 app.get('/friends', index.friends);
-app.get('/addFriend', index.addFriend);
+app.post('/addFriend', index.addFriend);
 app.get('/profile', index.friendProfile); //make it for you or friends?? idk
 app.get('/notif', index.notifs);
-app.get('/chatMessage', index.sendMessage);
-app.get('/inviteFriend', index.inviteFriend);
+app.post('/chatMessage', index.sendMessage);
+app.post('/inviteFriend', index.inviteFriend);
 app.get('/defaultTheme', index.defaultTheme);
 app.get('/altTheme', index.altTheme);
 app.get('/lightTheme', index.lightTheme);

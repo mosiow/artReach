@@ -214,32 +214,29 @@ exports.createProject = function(request, response) { 
 
 exports.addFriend = function(request, response) {
 	newFriend = {
-		name: "design-fan22",
+		name: request.body.name,
 		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
 		description: "I hope you're ready to draw!"
 	};
 	console.log(newFriend);
 	data.friendList.push(newFriend);
-	response.render('index', data);
 }
 
 exports.sendMessage = function(request, response) {
 	newMessage = {
 		name: "cogs120student",
 		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
-		content: "Hello! This is a test of the chat message feature. We will be expanding upon this soon!"
+		content: request.body.content
 	};
 	console.log(newMessage);
 	data.projectMessages.push(newMessage);
-	response.render('index', data);
 }
 
 exports.inviteFriend = function(request, response) {
 	newInvite = {
-		name: "design-fan22",
+		name: request.body.name,
 		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
-		content: "design-fan22 has entered the project."
+		content: request.body.name + " has entered the project."
 	};
 	data.projectMessages.push(newInvite);
-	response.render('index', data);
 }
