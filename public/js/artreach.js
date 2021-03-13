@@ -72,16 +72,39 @@ function loadPage(result)
 
 	//wip
 	$('#new-project-button').click(newProject);
-	$('#project').click(projectPage);
+	$('#project1').click(projectPage1);
+	$('#project2').click(projectPage2);
+	$('#project3').click(projectPage3);
+	$('#project4').click(projectPage4);
+	$('#project5').click(projectPage5);
 
-	//project page
+	//each project page
 	//NEED A WAY TO DIFFERENTIATE WIP AND ARCHIVE PAGES
 	$('#chat-back-button').click(wip);
+
 	$('#send-button').click(sendMessage);
 	$('#invite-button').click(inviteFriend);
+	$('#upload-button').click(sendUploadedFile);
+
+	$('#send-button2').click(sendMessage2);
+	$('#invite-button2').click(inviteFriend2);
+	$('#upload-button2').click(sendUploadedFile2);
+
+	$('#send-button3').click(sendMessage3);
+	$('#invite-button3').click(inviteFriend3);
+	$('#upload-button3').click(sendUploadedFile3);
+
+	$('#send-button4').click(sendMessage4);
+	$('#invite-button4').click(inviteFriend4);
+	$('#upload-button4').click(sendUploadedFile4);
+
+	$('#send-button5').click(sendMessage5);
+	$('#invite-button5').click(inviteFriend5);
+	$('#upload-button5').click(sendUploadedFile5);
+
 
 	//archive
-	$('#archive-project').click(projectPage);
+	//$('#archive-project').click(projectPage1);
 
 	//new project
 	$('#make-new').click(createNew);
@@ -161,10 +184,34 @@ function wip(e)
 	$.get('/wip', loadPage);
 }
 
-function projectPage(e)
+function projectPage1(e)
 {
 	e.preventDefault(e);
 	$.get('/project1', loadPage);
+}
+
+function projectPage2(e)
+{
+	e.preventDefault(e);
+	$.get('/project2', loadPage);
+}
+
+function projectPage3(e)
+{
+	e.preventDefault(e);
+	$.get('/project3', loadPage);
+}
+
+function projectPage4(e)
+{
+	e.preventDefault(e);
+	$.get('/project4', loadPage);
+}
+
+function projectPage5(e)
+{
+	e.preventDefault(e);
+	$.get('/project5', loadPage);
 }
 
 function archive(e)
@@ -179,6 +226,66 @@ function newProject(e)
 	$.get('/new', loadPage);
 }
 
+function sendUploadedFile(e)
+{
+	e.preventDefault();
+	var file = $('#file-contents').val();
+
+	$.post('/upload', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		imageContent: file});
+	$.get('/project1', loadPage);
+}
+
+function sendUploadedFile2(e)
+{
+	e.preventDefault();
+	var file = $('#file-contents2').val();
+
+	$.post('/upload2', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		imageContent: file});
+	$.get('/project2', loadPage);
+}
+
+function sendUploadedFile3(e)
+{
+	e.preventDefault();
+	var file = $('#file-contents3').val();
+
+	$.post('/upload3', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		imageContent: file});
+	$.get('/project3', loadPage);
+}
+
+function sendUploadedFile4(e)
+{
+	e.preventDefault();
+	var file = $('#file-contents4').val();
+
+	$.post('/upload4', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		imageContent: file});
+	$.get('/project4', loadPage);
+}
+
+function sendUploadedFile5(e)
+{
+	e.preventDefault();
+	var file = $('#file-contents5').val();
+
+	$.post('/upload5', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		imageContent: file});
+	$.get('/project5', loadPage);
+}
+
 function sendMessage(e)
 {
 	e.preventDefault();
@@ -191,6 +298,54 @@ function sendMessage(e)
 	$.get('/project1', loadPage);
 }
 
+function sendMessage2(e)
+{
+	e.preventDefault();
+	var chatMessage = $('#message2').val();
+
+	$.post('/chatMessage2', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		content: chatMessage});
+	$.get('/project2', loadPage);
+}
+
+function sendMessage3(e)
+{
+	e.preventDefault();
+	var chatMessage = $('#message3').val();
+
+	$.post('/chatMessage3', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		content: chatMessage});
+	$.get('/project3', loadPage);
+}
+
+function sendMessage4(e)
+{
+	e.preventDefault();
+	var chatMessage = $('#message4').val();
+
+	$.post('/chatMessage4', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		content: chatMessage});
+	$.get('/project4', loadPage);
+}
+
+function sendMessage5(e)
+{
+	e.preventDefault();
+	var chatMessage = $('#message5').val();
+
+	$.post('/chatMessage5', {
+		name: "cogs120student",
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+		content: chatMessage});
+	$.get('/project5', loadPage);
+}
+
 function inviteFriend(e)
 {
 	e.preventDefault();
@@ -201,6 +356,54 @@ function inviteFriend(e)
 		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
 	});
 	$.get('/project1', loadPage);
+}
+
+function inviteFriend2(e)
+{
+	e.preventDefault();
+	var friendName = $('#invite-name2').val();
+
+	$.post('/inviteFriend2', {
+		name: friendName,
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+	});
+	$.get('/project2', loadPage);
+}
+
+function inviteFriend3(e)
+{
+	e.preventDefault();
+	var friendName = $('#invite-name3').val();
+
+	$.post('/inviteFriend3', {
+		name: friendName,
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+	});
+	$.get('/project3', loadPage);
+}
+
+function inviteFriend4(e)
+{
+	e.preventDefault();
+	var friendName = $('#invite-name4').val();
+
+	$.post('/inviteFriend4', {
+		name: friendName,
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+	});
+	$.get('/project4', loadPage);
+}
+
+function inviteFriend5(e)
+{
+	e.preventDefault();
+	var friendName = $('#invite-name5').val();
+
+	$.post('/inviteFriend5', {
+		name: friendName,
+		thumbnail: "https://media.discordapp.net/attachments/570802038422765572/665308113133633537/Blitz_Smug.png",
+	});
+	$.get('/project5', loadPage);
 }
 
 function createNew(e)

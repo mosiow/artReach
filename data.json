@@ -6,6 +6,10 @@
   	"project-home": false,
 	"wip-projects": false,
 	"project-chat": false,
+	"project-chat2": false,
+	"project-chat3": false,
+	"project-chat4": false,
+	"project-chat5": false,
 	"archive": false,
 	"new-project": false,
 	"friends": false,
@@ -66,18 +70,43 @@
 
 	],
 
-	"notif-list":[
-		{
-			"title": "A notifcation",
-			"content": "Hey, listen!"
-		},
-		{
-			"title": "Ping!",
-			"content": "Listen to me!"
-		}
+	"notifList":[
+	
 	],
 
 	"projectMessages":[
+		{
+			"name": "cogs120student",
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+			"content": "cogs120student has entered the project."
+		}
+	],
+
+	"projectMessages2":[
+		{
+			"name": "cogs120student",
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+			"content": "cogs120student has entered the project."
+		}
+	],
+
+	"projectMessages3":[
+		{
+			"name": "cogs120student",
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+			"content": "cogs120student has entered the project."
+		}
+	],
+
+	"projectMessages4":[
+		{
+			"name": "cogs120student",
+			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",
+			"content": "cogs120student has entered the project."
+		}
+	],
+
+	"projectMessages5":[
 		{
 			"name": "cogs120student",
 			"thumbnail": "https://media.discordapp.net/attachments/570802038422765572/665308111795388442/Seo_Smile.png",

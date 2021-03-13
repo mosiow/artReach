@@ -130,7 +130,7 @@
 							<h5>+ New project</h5>
 						</a>
 						{{#each projects}}
-							<a id="project" class="list-group-item list-group-item-action">
+							<a id={{ID}} class="list-group-item list-group-item-action">
 								<div class="d-flex justify-content-between">
 									<h5>{{name}}</h5>
 									<small class="justify-content-between flex-wrap">
@@ -211,7 +211,7 @@
 			<h1>Notifications</h1>
 				<div class="container">
 					<ul class="list-group">
-						{{#each notif-list}}
+						{{#each notifList}}
 							<a id="notif" class="list-group-item list-group-item-action"><div class="d-flex justify-content-between"><h5>{{title}}</h5></div>
 							<small>{{content}}</small></a>
 						{{/each}}  	
@@ -220,7 +220,7 @@
 		{{/if}}
 
 		{{#if project-chat}}
-			<h1>Project 1</h1>
+			<h1>Project1</h1>
 
 			<div class="container d-flex flex-column">
 				<div class="d-flex justify-content-between">
@@ -241,6 +241,7 @@
 							<small class="time-right">11:00</small>
 						</div>
 						<p>{{content}}</p>
+						<img src={{upload}}>
 					{{/each}}
 				</div>
 
@@ -250,7 +251,164 @@
 		  				<button id="send-button" type="submit" class="btn btn-outline-dark">Send</button>
 					</form>
 					<form action="/project1" id="image-upload">
-					    <input type="file" id="myfile" name="myfile">
+						<input class="form-control" type="text" id="file-contents" placeholder="Type image URL here" />
+		  				<button id="upload-button" type="submit" class="btn btn-outline-dark">Upload</button>
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if project-chat2}}
+			<h1>Project2</h1>
+
+			<div class="container d-flex flex-column">
+				<div class="d-flex justify-content-between">
+					<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
+
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="invite-name2" placeholder="Add a friend to this project" />
+		  				<button id="invite-button2" type="submit" class="btn btn-outline-dark">Search</button>
+					</form>
+				</div>
+
+				<div id="chat2">
+					{{#each projectMessages2}}
+						<div class="d-flex justify-content-between">
+							<div>
+								<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>
+							</div>
+							<small class="time-right">11:00</small>
+						</div>
+						<p>{{content}}</p>
+						<img src={{upload}}>
+					{{/each}}
+				</div>
+
+				<div id="send-message" class="d-flex justify-content-between flex-wrap">
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="message2" placeholder="Type a status update" />
+		  				<button id="send-button2" type="submit" class="btn btn-outline-dark">Send</button>
+					</form>
+					<form action="/project2" id="image-upload">
+						<input class="form-control" type="text" id="file-contents2" placeholder="Type image URL here" />
+		  				<button id="upload-button2" type="submit" class="btn btn-outline-dark">Upload</button>
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if project-chat3}}
+			<h1>Project3</h1>
+
+			<div class="container d-flex flex-column">
+				<div class="d-flex justify-content-between">
+					<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
+
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="invite-name3" placeholder="Add a friend to this project" />
+		  				<button id="invite-button3" type="submit" class="btn btn-outline-dark">Search</button>
+					</form>
+				</div>
+
+				<div id="chat3">
+					{{#each projectMessages3}}
+						<div class="d-flex justify-content-between">
+							<div>
+								<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>
+							</div>
+							<small class="time-right">11:00</small>
+						</div>
+						<p>{{content}}</p>
+						<img src={{upload}}>
+					{{/each}}
+				</div>
+
+				<div id="send-message" class="d-flex justify-content-between flex-wrap">
+					<form id="friend-search" class="form-inline" action="/project3">
+				 		<input class="form-control" type="text" id="message3" placeholder="Type a status update" />
+		  				<button id="send-button3" type="submit" class="btn btn-outline-dark">Send</button>
+					</form>
+					<form action="/project3" id="image-upload">
+						<input class="form-control" type="text" id="file-contents3" placeholder="Type image URL here" />
+		  				<button id="upload-button3" type="submit" class="btn btn-outline-dark">Upload</button>
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if project-chat4}}
+			<h1>Project4</h1>
+
+			<div class="container d-flex flex-column">
+				<div class="d-flex justify-content-between">
+					<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
+
+					<form id="friend-search" class="form-inline" action="/project4">
+				 		<input class="form-control" type="text" id="invite-name4" placeholder="Add a friend to this project" />
+		  				<button id="invite-button4" type="submit" class="btn btn-outline-dark">Search</button>
+					</form>
+				</div>
+
+				<div id="chat4">
+					{{#each projectMessages4}}
+						<div class="d-flex justify-content-between">
+							<div>
+								<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>
+							</div>
+							<small class="time-right">11:00</small>
+						</div>
+						<p>{{content}}</p>
+						<img src={{upload}}>
+					{{/each}}
+				</div>
+
+				<div id="send-message" class="d-flex justify-content-between flex-wrap">
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="message4" placeholder="Type a status update" />
+		  				<button id="send-button4" type="submit" class="btn btn-outline-dark">Send</button>
+					</form>
+					<form action="/project4" id="image-upload">
+						<input class="form-control" type="text" id="file-contents4" placeholder="Type image URL here" />
+		  				<button id="upload-button4" type="submit" class="btn btn-outline-dark">Upload</button>
+					</form>
+				</div>
+			</div>
+		{{/if}}
+
+		{{#if project-chat5}}
+			<h1>Project5</h1>
+
+			<div class="container d-flex flex-column">
+				<div class="d-flex justify-content-between">
+					<button id="chat-back-button" type="button" class="btn btn-outline-dark">Back</button>
+
+					<form id="friend-search" class="form-inline" action="/project5">
+				 		<input class="form-control" type="text" id="invite-name5" placeholder="Add a friend to this project" />
+		  				<button id="invite-button5" type="submit" class="btn btn-outline-dark">Search</button>
+					</form>
+				</div>
+
+				<div id="chat5">
+					{{#each projectMessages5}}
+						<div class="d-flex justify-content-between">
+							<div>
+								<img src={{thumbnail}} id="friend-icon"><em>{{name}}</em>
+							</div>
+							<small class="time-right">11:00</small>
+						</div>
+						<p>{{content}}</p>
+						<img src={{upload}}>
+					{{/each}}
+				</div>
+
+				<div id="send-message" class="d-flex justify-content-between flex-wrap">
+					<form id="friend-search" class="form-inline" action="/project1">
+				 		<input class="form-control" type="text" id="message5" placeholder="Type a status update" />
+		  				<button id="send-button5" type="submit" class="btn btn-outline-dark">Send</button>
+					</form>
+					<form action="/project5" id="image-upload">
+						<input class="form-control" type="text" id="file-contents5" placeholder="Type image URL here" />
+		  				<button id="upload-button5" type="submit" class="btn btn-outline-dark">Upload</button>
 					</form>
 				</div>
 			</div>
